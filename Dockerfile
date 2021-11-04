@@ -14,7 +14,7 @@ RUN yum install git -y
 RUN git clone https://github.com/odobenuskr/serverless-inference-container.git
 
 # install packages
-RUN pip install -r profet-docker/requirements.txt
+RUN pip install -r serverless-inference-container/requirements.txt
 
 # move lambdafunc.py
 RUN cp serverless-inference-container/lambda_function.py /var/task/
