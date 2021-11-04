@@ -1,5 +1,8 @@
 FROM amazon/aws-lambda-python:3.8
 
+# add moddel file from local directory
+COPY mobilenetv2 /var/task/mobilenetv2
+
 # optional : ensure that pip is up to data
 RUN /var/lang/bin/python3.8 -m pip install --upgrade pip
 
