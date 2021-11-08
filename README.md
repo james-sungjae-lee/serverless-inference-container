@@ -21,7 +21,7 @@ cd Python-3.8*/
 sudo make altinstall
 sudo yum -y install gcc-c++
 sudo yum -y install python3-devel
-pip3.8 install tensorflow --user
+pip3.8 install tensorflow==2.5.0 --user
 wget https://raw.githubusercontent.com/kmu-bigdata/architect-cloud/master/sample-application/serverless-inference/save_mobilenet.py
 python3.8 save_mobilenet.py
 wget https://raw.githubusercontent.com/raghakot/keras-vis/master/resources/imagenet_class_index.json
