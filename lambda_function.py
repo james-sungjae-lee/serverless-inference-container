@@ -1,4 +1,5 @@
 import os
+import io
 import json
 import copy
 import boto3
