@@ -12,17 +12,15 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
 s3 = boto3.client('s3')
-
-enc_bucket = 'request-image-encrypted'
-n_enc_bucket = 'request-image-not-encrypted'
 model = load_model("/var/task/mobilenetv2")
+not_enc_bucket = 'request-image-not-encrypted'
 
 def save_img_s3(img, bucket_name):
     in_mem_file = io.BytesIO()
     img.save(in_mem_file, format=img.format)
     in_mem_file.seek(0)
     now = datetime.datetime.now()
-    filename = f"{now.strftime('%H:%M:%S')}.{img.format}"
+    filename = f"{now.strftime('%H%M%S')}.{img.format}"
     s3.upload_fileobj(in_mem_file, bucket_name,
                       f'{now.year}/{now.month}/{now.day}/{filename}',
                       ExtraArgs={'ACL': 'public-read'})
@@ -36,9 +34,7 @@ def multipart_to_input(multipart_data):
     img = BytesIO(binary_content[0])
     img = Image.open(img)
     
-#     Save image to s3 for offline training
-#     save_img_s3(img, enc_bucket)
-    save_img_s3(img, n_enc_bucket)
+    save_img_s3(img, not_enc_bucket)
     
     img = img.resize((224, 224), Image.ANTIALIAS)
     img = np.array(img)
