@@ -35,14 +35,8 @@ def multipart_to_input(multipart_data):
     img = BytesIO(binary_content[0])
     img = Image.open(img)
     
-    try:
-        save_img_s3(img, not_enc_bucket)
-    except Exception as e:
-        return {
-            'statusCode': 500,
-            'body': json.dumps(f"{e}")
-        }
-    
+    save_img_s3(img, not_enc_bucket)
+
     img = img.resize((224, 224), Image.ANTIALIAS)
     img = np.array(img)
     
@@ -79,7 +73,14 @@ def handler(event, context):
     
     multipart_data = decoder.MultipartDecoder(body, content_type)
     
-    img = multipart_to_input(multipart_data)
+    try:
+        img = multipart_to_input(multipart_data)
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': json.dumps(f"{e}")
+        }
+
     result = inference_model(img)
     
     return {
