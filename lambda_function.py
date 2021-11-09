@@ -35,8 +35,13 @@ def multipart_to_input(multipart_data):
     img = BytesIO(binary_content[0])
     img = Image.open(img)
     
-    save_img = copy.deepcopy(img)
-    save_img_s3(save_img, not_enc_bucket)
+    try:
+        save_img_s3(img, not_enc_bucket)
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': json.dumps(f"{e}")
+        }
     
     img = img.resize((224, 224), Image.ANTIALIAS)
     img = np.array(img)
