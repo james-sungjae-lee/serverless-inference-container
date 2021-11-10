@@ -1,7 +1,7 @@
 for (( tm=5; tm<=9; tm++ ))
 do
 
-	for (( om=0; om<=9; om++ ))
+	for (( om=5; om<=9; om++ ))
 	do
 
 		for (( ts=0; ts<=5; ts++ ))
