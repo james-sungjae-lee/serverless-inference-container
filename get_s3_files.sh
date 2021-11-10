@@ -1,10 +1,18 @@
-for (( a=0; a<=4; a++ ))
+for (( tm=5; tm<=9; tm++ ))
 do
-	for (( b = 0; b<=9; b++ ))
+
+	for (( om=0; om<=9; om++ ))
 	do
-		wget https://request-image-storage.s3.us-west-2.amazonaws.com/2021/11/05/DM_20211105173456_0$a$b.jpg
-		wget https://request-image-storage.s3.us-west-2.amazonaws.com/2021/11/05/DM_20211105173456_0$a$b.webp
-		wget https://request-image-storage.s3.us-west-2.amazonaws.com/2021/11/05/DM_20211105173456_0$a$b.png
+
+		for (( ts=0; ts<=5; ts++ ))
+		do
+			for (( os = 0; os<=9; os++ ))
+			do
+				wget https://request-image-not-encrypted.s3.us-west-2.amazonaws.com/2021/11/10/11$tm$om$ts$os.JPEG
+				wget https://request-image-not-encrypted.s3.us-west-2.amazonaws.com/2021/11/10/11$tm$om$ts$os.PNG
+				wget https://request-image-not-encrypted.s3.us-west-2.amazonaws.com/2021/11/10/11$tm$om$ts$os.WEBP
+			done
+		done
 	done
 done
 
