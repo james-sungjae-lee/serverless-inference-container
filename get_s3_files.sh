@@ -1,4 +1,4 @@
-for (( tm=5; tm<=9; tm++ ))
+for (( tm=0; tm<=5; tm++ ))
 do
 
 	for (( om=5; om<=9; om++ ))
