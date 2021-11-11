@@ -15,7 +15,7 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
 s3 = boto3.client('s3')
 model = load_model("/var/task/mobilenetv2")
-not_enc_bucket = 'request-image-not-encrypt'
+not_enc_bucket = 'request-image-not-encrypted'
 
 def save_img_s3(img, bucket_name):
     in_mem_file = io.BytesIO()
