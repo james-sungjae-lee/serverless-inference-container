@@ -25,8 +25,8 @@ pip3.8 install tensorflow==2.5.0 --user
 wget https://raw.githubusercontent.com/kmu-bigdata/architect-cloud/master/sample-application/serverless-inference/save_mobilenet.py
 python3.8 save_mobilenet.py
 wget https://raw.githubusercontent.com/raghakot/keras-vis/master/resources/imagenet_class_index.json
-mv mobilenetv2 ../
-mv imagenet_class_index.json ../
+mv mobilenetv2 ../serverless-inference-container/
+mv imagenet_class_index.json ../serverless-inference-container/
 cd ../
 
 # Docker Image Setting
